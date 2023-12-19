@@ -1,10 +1,14 @@
+
+
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ExportUploadModal from "./ExportUploadModal";
 
 function App() {
   return (
     <div className="App">
+      <ExportUploadModal modalFlag={true} modalClose={()=>{}}/>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
