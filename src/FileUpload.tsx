@@ -56,6 +56,8 @@ export function FileUpload(props:FileUploadDTO){
         onDragOver: onDragOver,
         onDragLeave: onDragLeave,
         disabled: props.files.length > 0,
+        maxFiles: 1,
+        multiple: false
     });
 
     const removeFile = (idx:number) => {
@@ -84,7 +86,7 @@ export function FileUpload(props:FileUploadDTO){
     return (
         <div className={`${styles.file} ${props.files.length > 0 ? styles.exists : ''} ${dragFlag?styles.dragFlag : ''}`} {...getRootProps()}>
             <div style={{display: props.files.length > 0 ? "none" : "block"}}>
-                <input {...getInputProps()} />
+                <input {...getInputProps()}/>
                 {dragMessage === "base" ? <p><FaCloudUploadAlt size={30} style={{marginRight: 5}} />Drag File & Select File</p>
                     : dragMessage === "size" ? <p><span className={styles.fileError}>File size should be less than {props.maxSize} B</span></p>
                         : dragMessage === "type" ? <p><span className={styles.fileError}>This is not valid file</span></p>
