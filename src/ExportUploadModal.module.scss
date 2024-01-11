@@ -1,0 +1,25 @@
+
+.width {
+  --bs-modal-width: none;
+}
+
+.sampleDescription {
+  width: 400px;
+  height: 300px;
+  border:1px solid #e9ecef;
+  position:relative;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  li {
+    color: #5a5a5a;
+    font-size: 15px;
+    margin-top: 20px;
+    font-weight: 400;
+    .downloadSampleBtn {
+      margin-top: 10px;
+    }
+  }
+}
