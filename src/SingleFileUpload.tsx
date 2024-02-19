@@ -74,27 +74,32 @@ export function SingleFileUpload(props:FileUploadDTO){
     }
 
     return (
-        <div className={`${styles.file} ${!!props.file || props.isLoading ? styles.dragDisabled : ''} ${dragFlag?styles.dragFlag : ''}`} {...getRootProps()}>
-            {
-                props.isLoading ?
-                    <Spinner/>
-                    :
-                    <div>
-                        <input {...getInputProps()}/>
-                        {dragMessage === "base" ?
-                            <p style={{userSelect: "none", msUserSelect: "none"}}><FaCloudUploadAlt size={30}
-                                                                                                    style={{marginRight: 5}}/><span>Drag File & Select File</span>
-                            </p>
-                            : dragMessage === "size" ? <p><span className={styles.fileError}>File size should be less than {props.maxSize} B</span>
-                                </p>
-                                : dragMessage === "type" ?
-                                    <p><span className={styles.fileError}>This is not valid file</span></p>
-                                    : dragMessage === "count" ? <p><span className={styles.fileError}>Maximum attachment file count exceeds</span>
-                                        </p>
-                                        : <p>Drop</p>
-                        }
-                    </div>
-            }
+        <div
+            className={`${styles.file} ${!!props.file || props.isLoading ? styles.dragDisabled : ''} ${dragFlag ? styles.dragFlag : ''}`} {...getRootProps()}>
+            <div className={styles.uploadWrapper}>
+                <div style={{position: "relative", top: "50%", transform: "translate(0, -50%)"}}>
+
+                    {
+                        props.isLoading ?
+                            <Spinner/>
+                            :
+                            <div>
+                                <input {...getInputProps()}/>
+                                {dragMessage === "base" ?
+                                    <>
+                                        <div><FaCloudUploadAlt size={30} style={{marginRight: 5}}/></div>
+                                        <div>Drag File & Select File</div>
+                                    </>
+                                    : dragMessage === "size" ? <div className={styles.fileError}>File size should be less than {props.maxSize} B</div>
+                                        : dragMessage === "type" ? <div className={styles.fileError}>This is not valid file</div>
+                                            : dragMessage === "count" ? <div className={styles.fileError}>Maximum attachment file count exceeds</div>
+                                                : <div>Drop</div>
+                                }
+                            </div>
+                    }
+
+                </div>
+            </div>
         </div>
     );
 
